@@ -1,1 +1,1 @@
-
+Bowling pálya időpontfoglaló oldal
