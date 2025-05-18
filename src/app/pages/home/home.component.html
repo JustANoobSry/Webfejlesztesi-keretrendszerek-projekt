@@ -27,3 +27,10 @@
 <div class = "kapcsolat">
     <p>Email: bowlingklub&#64;example.com | Telefon: +36 30 123 4567</p>
 </div>
+ @if (!isLoggedIn) {
+      <button mat-flat-button color="accent" [routerLink]="['/login']" class="tasks">Login</button>
+    }
+    
+    @if (isLoggedIn) {
+      <button mat-flat-button color="accent" [routerLink]="['/profile']" class="tasks">My Profile</button>
+    }

@@ -28,7 +28,7 @@ import { User } from '../../shared/models/User';
 export class SignupComponent {
   signUpForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl(0,[Validators.required]),
+    phone: new FormControl(0,[Validators.required, Validators.minLength(11)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     rePassword: new FormControl('', [Validators.required]),
     name: new FormGroup({
@@ -45,7 +45,7 @@ export class SignupComponent {
 
   signup(): void {
     if (this.signUpForm.invalid) {
-      this.signupError = 'Kérem javítsa a megadott adatokat mielőtt tovább lépne!';
+      this.signupError = 'Please correct the form errors before submitting.';
       return;
     }
 
@@ -65,11 +65,11 @@ export class SignupComponent {
         lastname: this.signUpForm.value.name?.lastname || ''
       },
       email: this.signUpForm.value.email || '',
-      phone: this.signUpForm.value.phone || 0 ,
-      password: this.signUpForm.value.password || ''
+      password: this.signUpForm.value.password || '',
+      phone: this.signUpForm.value.phone ||0,
     };
 
-    console.log('Új felhasználó:', newUser);
+    console.log('New user:', newUser);
     console.log('Form value:', this.signUpForm.value);
 
     setTimeout(() => {
